@@ -6,7 +6,6 @@
 void CreateList(List L, int n)
 {//这个读入的n没啥用，只是为了和Sq的统一
     L->head = NULL;
-    //L->prior = NULL; 
     //这个链表头就是把一个指针封装改个名，没啥特别的
     //顶多算个头结点，只是这个结点没有数据域
 }
@@ -47,9 +46,7 @@ void InsertElem(List L, int i, int m, int order)
         Node* ins = L->head; //声明一个Node指针指向L的首元
         
         for (; i > 1; i--) //把ins指针漫游到待插入的位置前面
-        {
             ins = ins->next;
-        }
 
         Node* temp = (Node*)malloc(sizeof(Node));
         temp->data = m;
