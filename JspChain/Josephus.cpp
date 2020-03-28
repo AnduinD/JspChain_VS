@@ -5,7 +5,7 @@
 
 inline void mRandomize(int &m) 
 {
-    while (0 == (m = ((rand() % 2 == 0) ? 1 : -1) * (rand() % m_MAX))) ;
+    while (0 == (m = ((rand() % 2 == 0) ? 1 : -1) * ((double)rand()/RAND_MAX)*m_MAX)) ;
 }
 
 void Randomize(int n, int& m, List L)///随机初始化函数
@@ -38,7 +38,7 @@ void Randomize(int n, int& m, List L)///随机初始化函数
 #endif /*DEBUG*/
 }
 
-void Josephus(int m, List L, int* popOrder)///用双循环链表模拟约瑟夫环的函数
+void Josephus(int m, List L, int* popOrder)
 {
     int i = 0;
     while (!IsEmpty(L))
