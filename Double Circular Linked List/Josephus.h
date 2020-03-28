@@ -1,6 +1,6 @@
 #pragma once
 #include"DCLinkedList.h"
-#define m_MAX 40000///改这个参数来调整生成m的范围
+#define m_MAX 100000///改这个参数来调整生成m的范围
 
 void mRandomize(int& m);//给m赋随机值
 

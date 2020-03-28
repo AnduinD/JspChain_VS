@@ -5,7 +5,7 @@
 
 inline void mRandomize(int& m)
 {
-    while (0 == (m = ((rand() % 2 == 0) ? 1 : -1) * (rand() % m_MAX)));
+    while (0 == (m = ((rand() % 2 == 0) ? 1 : -1) * ((double)rand()/RAND_MAX)*m_MAX));
 }
 
 void Randomize(int n, int& m, List L)///随机初始化函数
@@ -43,10 +43,9 @@ void Josephus(int m, List L, int* popOrder)///用双循环链表模拟约瑟夫环的函数
     int i = 0;
     while (!IsEmpty(L))
     {
-        if (m > 0)//顺时针转的时候
-            m = m % (getLength(L)) - 1;//这个减1是因为从自己报1开始
-        else//逆时针转的时候
-            m = m % (getLength(L)) + 1;//这个加1是因为从自己报1开始
+            m %= getLength(L);//模到一圈之内
+            m = (m-1) >(getLength(L)-m+1) ? (m - getLength(L)-1) : (m-1) ;//比较正转和反转的距离
+
         DeleteElem(L, m, popOrder[i++]);///从表L中删除第m个元素，
                                           ///并将表头移动到m的下一个元素位置处(删除时移动表头很关键！！！)
                                           ///带回第m个元素的密码值作为下次启动的密码

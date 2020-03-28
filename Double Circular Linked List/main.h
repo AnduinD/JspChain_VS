@@ -6,7 +6,7 @@
 #include<windows.h>
 #include"Josephus.h"
 
-#define data_amount  100//调这个参数来改变需要记录的数据组数（即实验次数）
-#define n_MAX 1000000//调这个参数来改变n的上限
+#define data_amount  1000//调这个参数来改变需要记录的数据组数（即实验次数）
+#define n_MAX 50000//调这个参数来改变n的上限
 
 int main();

@@ -5,7 +5,6 @@ int main()
 #if DEBUG
 #else
     freopen("out.txt", "w", stdout);
-
     for (int z = 0; z <= data_amount; z++)
     {
 #endif //DEBUG
@@ -20,7 +19,7 @@ int main()
         m = 20, n = 7;
 #else
         srand(z * time(NULL));
-        while (0 == (n = (rand() * rand()) % n_MAX));
+        while (0 == (n = (double)rand()/RAND_MAX * n_MAX));
 #endif // DEBUG
 
         CreateList(L, n);

@@ -65,35 +65,27 @@ void InsertElem(List L, int i, int m, int order)
 void DeleteElem(List L, int& m, int& order)
 {
     if (L->head->next==L->head) //只剩一个结点的时候
-    {
-        /*Node* temp = L->head;
-        temp->next = NULL;
-        L->head = NULL;*/
-        
+    {        
         L->head->next = L->head->prior=NULL;
-
         ///带出所需的值
         order =L->head->order;
         m = L->head->data;
 
         free(L->head);
         L->head = NULL;
-       
     }
     else//表里不只有一个结点的时候
     {
         Node* cur = L->head;
-        //Node* pre = L->tail;
-        //声明两个Node指针指向L的表头元素，在遍历后分别指向待删除的结点和它的前驱结点
-        for (int i = 1; i <= m; i++)//把cur移动到待删除元素的头上
-        {
-           // pre = pre->next;
-            cur = cur->next;
-        }
-        //while (pre->next != cur) pre = pre->next;///单循环链表一个贼缺陷的地方
-        ///如果删除首元的话，pre指针得把整个表跑一遍，淦
-        //有一个方法是给循环链表加一个尾结点，感觉还不错？类似头节点的样子。
 
+        //把cur移动到待删除元素的头上
+        if (m >= 0)
+            for (int i = 1; i <= m; i++)
+                cur = cur->next;
+        else
+            for (int i = -1; i >= m; i--)
+                cur = cur->prior;
+        
         L->head = cur->next;//把表头接过来先
 
         ///进行删除时的指针域调整

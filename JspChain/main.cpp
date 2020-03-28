@@ -20,7 +20,7 @@ int main()
         m = 20, n = 7;
 #else
         srand(z * time(NULL));
-        while (0 == (n = (rand()*rand()) % n_MAX));
+        while (0 == (n = (rand()% n_MAX));
 #endif // DEBUG
 
         CreateList(L, n);
